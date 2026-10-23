@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memora AI</title>
+    <link rel="stylesheet" href="{{ url_for('style') }}">
+</head>
+<body>
+<div class="layout">
+    <nav class="sidebar" aria-label="Navigasi utama">
+        <h2>Memora <span>AI</span></h2>
+        <p class="menu-label">MAIN MENU</p>
+
+        <a class="active" href="#halaman-dashboard"
+           data-halaman="halaman-dashboard" data-judul="Dashboard Overview"
+           aria-current="page">
+            ▦ Dashboard
+        </a>
+        <a href="#halaman-memory" data-halaman="halaman-memory"
+           data-judul="Memory Monitor">
+            ▤ Memory Monitor
+        </a>
+        <a href="#halaman-zerocopy" data-halaman="halaman-zerocopy"
+           data-judul="Zero-copy Simulator">
+            ⇄ Zero-copy Simulator
+        </a>
+        <a href="#halaman-pipeline" data-halaman="halaman-pipeline"
+           data-judul="Data Pipeline">
+            ⌘ Data Pipeline
+        </a>
+    </nav>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <h1 id="judulHalaman">Dashboard Overview</h1>
+                <p>AI Memory Management Simulator</p>
+            </div>
+            <div class="status">
+                <span id="statusSistem">● Sistem Siap</span>
+            </div>
+        </header>
+
+        <section id="halaman-dashboard" class="halaman aktif dashboard">
+            <section class="welcome">
+                <h2>Welcome to Memora AI</h2>
+                <p>Monitoring simulasi manajemen memori untuk pemrosesan AI skala besar.</p>
+                <p>Waktu terakhir dijalankan: <span id="waktuTerakhir">Belum ada</span></p>
+            </section>
+
+            <section class="card summary">
+                <h3>Simulation Summary</h3>
+                <p id="ringkasan">Belum ada simulasi yang dijalankan.</p>
+                <p id="hasil"></p>
+            </section>
+
+            <section class="card">
+                <h3>Simulation History</h3>
+                <input
+                    type="text"
+                    id="cariRiwayat"
+                    placeholder="Cari riwayat simulasi..."
+                >
+                <p id="pesanPencarian" hidden></p>
+                <label for="filterRiwayat">Filter Riwayat</label>
+                <select id="filterRiwayat" onchange="filterDataRiwayat()">
+                    <option value="semua">Semua Riwayat</option>
+                    <option value="memori">Penggunaan Memori</option>
+                    <option value="zero-copy">Zero-copy</option>
+                </select>
+                <ul id="riwayat">
+                    <li>Menunggu simulasi...</li>
+                </ul>
+            </section>
+
+            <section class="actions">
+                <button id="tombolJalankan">Jalankan Simulasi</button>
+                <button id="tombolReset" class="btn-reset">Reset Simulasi</button>
+                <button id="tombolDownload" class="btn-download">Download Riwayat</button>
+            </section>
+        </section>
+
+        <section id="halaman-memory" class="halaman dashboard">
+            <div class="card" id="memory">
+                <p>Penggunaan Memori</p>
+                <h2>65%</h2>
+                <p id="statusMemori">Status: Normal</p>
+                <hr>
+                <label for="kapasitasMemori">Kapasitas Memori</label>
+                <select id="kapasitasMemori">
+                    <option value="512">512 MB</option>
+                    <option value="1024" selected>1 GB</option>
+                    <option value="2048">2 GB</option>
+                    <option value="4096">4 GB</option>
+                </select>
+                <p>Memori terpakai: <span id="memoriTerpakai">665.6</span> MB</p>
+            </div>
+
+            <div class="card memory-chart" data-bagian="memory">
+                <h3>Memory Usage</h3>
+                <progress id="grafikMemori" value="65" max="100"></progress>
+                <p id="persenGrafik">65%</p>
+                <h4>Riwayat Penggunaan Memori</h4>
+                <div id="grafikRiwayat" class="grafik-riwayat"></div>
+            </div>
+        </section>
+
+        <section id="halaman-zerocopy" class="halaman dashboard">
+            <div class="card" id="zerocopy">
+                <p>Zero-copy Simulator</p>
+                <h2><span id="pengurangan">66.7</span>%</h2>
+                <p>Pengurangan penyalinan data</p>
+                <p>Copy Biasa: <span id="copyBiasa">3</span> kali</p>
+                <p>Zero-copy: <span id="zeroCopy">1</span> kali</p>
+                <hr>
+
+                <label for="ukuranData"><strong>Ukuran Data Simulasi</strong></label>
+                <select id="ukuranData">
+                    <option value="10">10 MB</option>
+                    <option value="50" selected>50 MB</option>
+                    <option value="100">100 MB</option>
+                    <option value="500">500 MB</option>
+                </select>
+
+                <p>Total data Copy Biasa: <span id="dataCopyBiasa">150</span> MB</p>
+                <p>Total data Zero-copy: <span id="dataZeroCopy">50</span> MB</p>
+                <p>Copy Biasa: <span id="waktuCopyBiasa">60</span> ms</p>
+                <p>Zero-copy: <span id="waktuZeroCopy">20</span> ms</p>
+                <p id="peringatanKapasitas">Kapasitas memori mencukupi.</p>
+
+                <div id="hasilPerbandingan">
+                    <h4>Hasil Perbandingan</h4>
+                    <p>Pilih Bandingkan Metode untuk melihat hasil.</p>
+                </div>
+
+                <div class="grafik-perbandingan">
+                    <h4>Grafik Waktu Pemrosesan</h4>
+                    <p>Copy Biasa</p>
+                    <div class="batang-grafik">
+                        <div id="batangCopyBiasa" class="batang copy-biasa"
+                             style="width: 100%;">120 ms</div>
+                    </div>
+                    <p>Zero-copy</p>
+                    <div class="batang-grafik">
+                        <div id="batangZeroCopy" class="batang zero-copy"
+                             style="width: 33.3%;">40 ms</div>
+                    </div>
+                </div>
+
+                <div class="tabel-perbandingan">
+                    <h4>Perbandingan Berbagai Ukuran Data</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ukuran Data</th>
+                                <th>Copy Biasa</th>
+                                <th>Zero-copy</th>
+                                <th>Penghematan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelUkuranData">
+                            <tr>
+                                <td>10 MB</td>
+                                <td>12 ms</td>
+                                <td>4 ms</td>
+                                <td>66.7%</td>
+                            </tr>
+                            <tr>
+                                <td>50 MB</td>
+                                <td>60 ms</td>
+                                <td>20 ms</td>
+                                <td>66.7%</td>
+                            </tr>
+                            <tr>
+                                <td>100 MB</td>
+                                <td>120 ms</td>
+                                <td>40 ms</td>
+                                <td>66.7%</td>
+                            </tr>
+                            <tr>
+                                <td>500 MB</td>
+                                <td>600 ms</td>
+                                <td>200 ms</td>
+                                <td>66.7%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button id="tombolBandingkan">Bandingkan Metode</button>
+            </div>
+
+            <div class="card">
+                <p>Processing Time</p>
+                <h2><span id="waktuZeroUtama">20</span> ms</h2>
+                <p>Copy Biasa: <span id="waktuBiasaUtama">60</span> ms</p>
+                <p>Zero-copy: <span id="waktuZeroCadangan">20</span> ms</p>
+            </div>
+        </section>
+
+        <section id="halaman-pipeline" class="halaman dashboard halaman-pipeline">
+            <div class="card" id="pipeline">
+                <h3>Data Pipeline</h3>
+                <div class="pipeline-flow">
+                    <div>Camera / Sensor</div>
+                    <span>↓</span>
+                    <div>
+                        <h3>Shared Memory</h3>
+                        <p>Status: <span id="statusSharedMemory">Menunggu data</span></p>
+                        <p>Data Diterima: <span id="dataSharedMemory">0</span></p>
+                    </div>
+                    <span>↓</span>
+                    <div>
+                        <h3>GPU / AI Processing</h3>
+                        <p>Status: <span id="statusGPU">Menunggu data</span></p>
+                        <p>Data Diproses: <span id="dataGPU">0</span></p>
+                    </div>
+                </div>
+
+                <div class="sensor-monitor">
+                    <h3>📷 Live Camera / Sensor</h3>
+                    <video id="kameraLaptop" autoplay playsinline
+                           muted style="width:100%; max-width:400px; border-radius:10px;">
+                    </video>
+                    <p id="statusKamera">Kamera belum dinyalakan</p>
+                    <button id="tombolKamera" onclick="toggleKamera()">
+                        Nyalakan Kamera Laptop
+                    </button>
+                    <p>Status Sensor: <span id="statusSensor">Standby</span></p>
+                    <p>Data Terdeteksi: <span id="jumlahDataSensor">0</span></p>
+                    <p>Data Terakhir: <span id="dataSensor">Belum ada data</span></p>
+                    <button id="tombolSensor" onclick="toggleSensor()">
+                        Mulai Camera / Sensor
+                    </button>
+                </div>
+                <p id="statusPipeline">Status: Simulasi Aktif</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Memora AI — AI Memory Management Simulator</p>
+            <p>Project Sistem Operasi | Kelompok 7</p>
+        </footer>
+    </main>
+</div>
+
+<script src="{{ url_for('script') }}"></script>
+</body>
+</html>

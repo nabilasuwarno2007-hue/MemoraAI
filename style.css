@@ -1,0 +1,1552 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    margin-bottom: 12px;
+    color: #0f172a;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #dbe2ea;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 245px;
+    min-width: 245px;
+    background: #111827;
+    padding: 30px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar h2 {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.sidebar h2 span {
+    color: #38bdf8;
+}
+
+.menu-label {
+    color: #94a3b8;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.sidebar a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #1e40af;
+    color: white;
+    transform: translateX(4px);
+}
+
+
+/* MAIN CONTENT */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 30px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 28px;
+}
+.topbar {
+        background: white;
+        padding: 20px 24px;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.topbar h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.topbar p,
+.welcome p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.status {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 10px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.welcome {
+    background: linear-gradient(120deg, #1d4ed8, #0891b2);
+    color: white;
+    padding: 28px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.welcome h2 {
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    color: #e0f2fe;
+    line-height: 1.6;
+}
+
+/* DASHBOARD CARDS */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+    padding: 23px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+    min-width: 0;
+    overflow-wrap: anywhere;
+    border-top: 4px solid #38bdf8;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.1);
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+.card > p:first-child {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 13px;
+}
+
+
+.card h2 {
+    color: #2563eb;
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+
+.card p {
+    line-height: 1.7;
+    font-size: 13px;
+    color: #64748b;
+}
+
+#memory h2,
+#zerocopy h2 {
+    color: #2563eb;
+}
+
+.memory-chart {
+    grid-column: span 1;
+}
+
+progress {
+    width: 100%;
+    height: 14px;
+    accent-color: #0891b2;
+    margin: 15px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pipeline-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.pipeline-flow div {
+    width: 100%;
+    text-align: center;
+    padding: 13px 8px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.pipeline-flow span {
+    color: #0891b2;
+    font-size: 20px;
+}
+
+
+#riwayat {
+    padding-left: 18px;
+    max-height: 180px;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+}
+
+
+#riwayat li {
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #475569;
+}
+
+/* BUTTONS */
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+button.btn-reset {
+    background: #64748b;
+}
+
+button.btn-download {
+    background: #0891b2;
+}
+
+.summary {
+    margin-bottom: 25px;
+}
+
+#hasil {
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid #e2e8f0;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;        
+    }
+    
+    .welcome {
+        padding: 22px;
+    }
+}
+
+.actions button {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.15);
+}
+
+.actions button:active {
+    transform: translateY(0);
+}
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#memory,
+#zerocopy,
+#pipeline {
+    scroll-margin-top: 20px;
+}
+#cariRiwayat {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 12px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#cariRiwayat:focus {
+    border-color: #0891b2;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+.card {
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
+button {
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+button:focus-visible,
+.sidebar a:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 3px;
+}
+
+#cariRiwayat {
+    background: #ffffff;
+    color: #1e293b;
+}
+
+#cariRiwayat::placeholder {
+    color: #94a3b8;
+}
+
+.pipeline-flow div {
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pipeline-flow div:hover {
+    background: #dbeafe;
+    transform: scale(1.02);
+}
+
+footer {
+    text-align: center;
+}
+
+/* Animasi Data Pipeline Memora AI */
+.pipeline-flow div.sedang-proses {
+    background: #bfdbfe;
+    color: #1d4ed8;
+    border: 2px solid #3b82f6;
+    transform: scale(1.04);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
+}
+
+.pipeline-flow div.selesai-proses {
+    background: #dcfce7;
+    color: #166534;
+    border: 2px solid #22c55e;
+}
+
+
+/* Tampilan Data Pipeline */
+.pipeline-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.pipeline-flow div {
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    font-weight: 600;
+    text-align: center;
+}
+
+.pipeline-flow span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #64748b;
+}
+
+
+.grafik-riwayat {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 12px;
+    min-height: 180px;
+    padding: 20px 10px;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.batang-grafik {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex: 1;
+    height: 160px;
+    font-size: 12px;
+}
+
+.tinggi-batang {
+    width: 100%;
+    max-width: 38px;
+    min-height: 5px;
+    background: #3b82f6;
+    border-radius: 6px 6px 0 0;
+    transition: height 0.4s ease;
+}
+
+/* Grafik Perbandingan Zero-copy */
+.grafik-perbandingan {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grafik-perbandingan h4 {
+    margin: 0 0 20px;
+    color: #1e293b;
+}
+
+.grafik-perbandingan p {
+    margin: 14px 0 8px;
+    font-size: 14px;
+    color: #475569;
+}
+
+.batang-grafik {
+    width: 100%;
+    height: 32px;
+    background: #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.batang {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    transition: width 0.4s ease;
+    white-space: nowrap;
+}
+
+.batang.copy-biasa {
+    background: #64748b;
+}
+
+.batang.zero-copy {
+    background: #0891b2;
+}
+
+/* Tabel Perbandingan Zero-copy */
+.tabel-perbandingan {
+    margin-top: 20px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.tabel-perbandingan h4 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #1e293b;
+}
+
+.tabel-perbandingan table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 420px;
+}
+
+.tabel-perbandingan th,
+.tabel-perbandingan td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+.tabel-perbandingan th {
+    background: #f1f5f9;
+    color: #334155;
+}
+
+.tabel-perbandingan tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* Animasi aliran data Memora AI */
+.pipeline-flow div.sedang-proses {
+    border: 2px solid #06b6d4;
+    background: #ecfeff;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    transform: scale(1.04);
+    transition: all 0.3s ease;
+}
+
+.pipeline-flow div.selesai-proses {
+    border: 2px solid #22c55e;
+    background: #f0fdf4;
+    transition: all 0.3s ease;
+}
+
+.sensor-monitor {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.sensor-monitor button {
+    margin-top: 10px;
+    padding: 10px 16px;
+    background: #0891b2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.sensor-monitor button:hover {
+    background: #0e7490;
+}
+
+/* Sistem pergantian halaman */
+.halaman {
+    display: none;
+}
+
+.halaman.aktif {
+    display: block;
+}
+
+.halaman.aktif.dashboard {
+    display: grid;
+}
+
+.halaman-pipeline > .card,
+.dashboard > .welcome,
+.dashboard > .actions {
+    grid-column: 1 / -1;
+}
+
+/* Polesan visual dashboard Memora AI */
+:root {
+    color-scheme: light;
+    --warna-navy: #101a2f;
+    --warna-navy-terang: #182844;
+    --warna-teks: #17243b;
+    --warna-redup: #708098;
+    --warna-batas: #e3eaf3;
+    --warna-latar: #f3f6fb;
+    --warna-biru: #3478f6;
+    --warna-cyan: #17b8d4;
+    --bayangan-kartu: 0 12px 32px rgba(20, 38, 68, 0.07);
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 90% 0%, rgba(50, 120, 246, 0.06), transparent 36%),
+        var(--warna-latar);
+    color: var(--warna-teks);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--warna-teks);
+    letter-spacing: -0.025em;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.layout {
+    align-items: flex-start;
+}
+
+.sidebar {
+    z-index: 2;
+    background: linear-gradient(180deg, var(--warna-navy), #111e35 78%, #14243d);
+    box-shadow: 8px 0 28px rgba(16, 26, 47, 0.08);
+    padding: 30px 17px;
+}
+
+.sidebar h2 {
+    margin: 2px 10px 28px;
+    font-size: 24px;
+    font-weight: 750;
+    letter-spacing: -0.045em;
+}
+
+.sidebar h2 span {
+    color: #54d5ef;
+}
+
+.menu-label {
+    margin: 0 12px 8px;
+    color: #8292ac;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.sidebar a {
+    border: 1px solid transparent;
+    border-radius: 11px;
+    color: #c1ccdc;
+    font-size: 13px;
+    font-weight: 550;
+    padding: 12px 13px;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    transform: none;
+}
+
+.sidebar a.active {
+    border-color: rgba(105, 190, 255, 0.18);
+    background: linear-gradient(105deg, #2458c8, #2879e9);
+    box-shadow: 0 8px 20px rgba(22, 96, 222, 0.25);
+    color: #fff;
+    transform: none;
+}
+
+.main-content {
+    width: min(100%, 1500px);
+    margin: 0 auto;
+    padding: 32px clamp(20px, 3.5vw, 52px);
+}
+
+.topbar {
+    align-items: center;
+    margin-bottom: 26px;
+    padding: 21px 25px;
+    border: 1px solid rgba(226, 234, 244, 0.9);
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 8px 24px rgba(20, 38, 68, 0.045);
+}
+
+.topbar h1 {
+    margin: 0 0 3px;
+    font-size: clamp(22px, 2.4vw, 29px);
+    font-weight: 720;
+}
+
+.topbar p {
+    margin: 0;
+    color: var(--warna-redup);
+    font-size: 13px;
+}
+
+.status {
+    padding: 0;
+    border-radius: 999px;
+    background: transparent;
+    white-space: normal;
+}
+
+#statusSistem {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 8px 13px;
+    border: 1px solid rgba(34, 197, 94, 0.13);
+    border-radius: 999px;
+    background: #eaf8ef;
+    color: #187345;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.halaman.aktif.dashboard {
+    gap: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+#halaman-dashboard > .welcome {
+    margin: 0;
+    padding: clamp(24px, 4vw, 38px);
+    border: 1px solid rgba(104, 178, 255, 0.18);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 85% 18%, rgba(80, 216, 239, 0.22), transparent 32%),
+        linear-gradient(120deg, #183a79 0%, #205eb8 58%, #117f9d 100%);
+    box-shadow: 0 14px 30px rgba(24, 77, 153, 0.15);
+}
+
+.welcome h2 {
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: clamp(22px, 3vw, 30px);
+    letter-spacing: -0.035em;
+}
+
+.welcome p {
+    max-width: 720px;
+    margin-bottom: 8px;
+    color: rgba(239, 248, 255, 0.84);
+}
+
+.welcome p:last-child {
+    margin-top: 18px;
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+.card {
+    min-width: 0;
+    padding: 23px;
+    overflow-wrap: anywhere;
+    border: 1px solid var(--warna-batas);
+    border-top: 1px solid var(--warna-batas);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: var(--bayangan-kartu);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+    transform: none;
+    border-color: #d5e1f0;
+    box-shadow: 0 15px 34px rgba(20, 38, 68, 0.09);
+}
+
+.card h3 {
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card h4 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.card h3::before,
+#memory > p:first-child::before,
+#zerocopy > p:first-child::before,
+#halaman-zerocopy > .card:not(#zerocopy) > p:first-child::before {
+    display: inline-grid;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border: 1px solid #e0eaff;
+    border-radius: 9px;
+    background: #f0f5ff;
+    color: #3478e8;
+    font-size: 14px;
+    font-weight: 750;
+    line-height: 1;
+    place-items: center;
+    vertical-align: middle;
+}
+
+#halaman-dashboard > .summary h3::before {
+    content: "✦";
+}
+
+#halaman-dashboard > .card:not(.summary) h3::before {
+    content: "↻";
+}
+
+#halaman-memory #memory > p:first-child::before {
+    content: "◉";
+}
+
+#halaman-memory .memory-chart h3::before {
+    content: "◒";
+}
+
+#halaman-zerocopy #zerocopy > p:first-child::before {
+    content: "⇄";
+}
+
+#halaman-zerocopy > .card:not(#zerocopy) > p:first-child::before {
+    content: "◷";
+}
+
+#halaman-pipeline #pipeline > h3::before {
+    content: "⌘";
+}
+
+.card p {
+    color: #66758b;
+    font-size: 13px;
+}
+
+.card > p:first-child {
+    color: var(--warna-redup);
+    font-size: 12px;
+    font-weight: 650;
+    letter-spacing: 0.015em;
+}
+
+.card h2,
+#memory h2,
+#zerocopy h2 {
+    color: #286be0;
+    font-size: 34px;
+    font-weight: 750;
+    letter-spacing: -0.045em;
+}
+
+.summary {
+    margin: 0;
+}
+
+.summary #ringkasan {
+    color: #34445d;
+    font-size: 14px;
+}
+
+.actions {
+    align-items: center;
+    gap: 11px;
+    margin: 0;
+    padding: 15px 17px;
+    border: 1px solid var(--warna-batas);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+button {
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: linear-gradient(110deg, #3478f6, #2864d4);
+    box-shadow: 0 5px 12px rgba(42, 105, 221, 0.16);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 650;
+    transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+button:hover {
+    background: linear-gradient(110deg, #286ce7, #1f55bf);
+    box-shadow: 0 7px 16px rgba(42, 105, 221, 0.23);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.btn-reset {
+    border-color: #dbe3ed;
+    background: #f2f5f9;
+    box-shadow: none;
+    color: #43536b;
+}
+
+button.btn-reset:hover {
+    background: #e8edf4;
+    box-shadow: 0 5px 12px rgba(38, 55, 82, 0.08);
+}
+
+button.btn-download,
+.sensor-monitor button {
+    background: linear-gradient(110deg, #078ba9, #087991);
+    box-shadow: 0 5px 12px rgba(8, 137, 164, 0.15);
+}
+
+button.btn-download:hover,
+.sensor-monitor button:hover {
+    background: linear-gradient(110deg, #087d99, #086b82);
+}
+
+input,
+select {
+    min-height: 42px;
+    border: 1px solid #d8e1ec;
+    border-radius: 9px;
+    background-color: #fff;
+    color: #26364e;
+    font: inherit;
+    font-size: 13px;
+}
+
+input {
+    padding: 10px 12px;
+}
+
+select {
+    padding: 9px 34px 9px 12px;
+}
+
+input:focus,
+select:focus {
+    border-color: #62a0fa;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 120, 246, 0.12);
+}
+
+#cariRiwayat {
+    min-height: 42px;
+    margin: 8px 0 13px;
+    border-color: #dce5ef;
+    border-radius: 9px;
+    background: #fbfcfe;
+    font-size: 13px;
+}
+
+#cariRiwayat:focus {
+    border-color: #62a0fa;
+    box-shadow: 0 0 0 3px rgba(52, 120, 246, 0.12);
+}
+
+#filterRiwayat {
+    display: block;
+    width: 100%;
+    margin: 7px 0 14px;
+}
+
+#halaman-dashboard > .card label,
+#halaman-memory label,
+#halaman-zerocopy label {
+    display: inline-block;
+    margin: 4px 0 7px;
+    color: #50617a;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+#halaman-memory select,
+#halaman-zerocopy select {
+    display: block;
+    width: 100%;
+    margin: 4px 0 13px;
+}
+
+#halaman-memory #memory {
+    height: 100%;
+}
+
+#halaman-memory #statusMemori,
+#halaman-zerocopy #peringatanKapasitas {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid #d9efe2;
+    border-radius: 999px;
+    background: #eef8f1;
+    color: #227247;
+    font-size: 11px;
+    font-weight: 650;
+}
+
+#grafikMemori {
+    appearance: none;
+    height: 12px;
+    margin: 12px 0 5px;
+    border-radius: 999px;
+    accent-color: var(--warna-cyan);
+}
+
+#grafikMemori::-webkit-progress-bar {
+    border-radius: 999px;
+    background: #e8eef6;
+}
+
+#grafikMemori::-webkit-progress-value {
+    border-radius: 999px;
+}
+
+#persenGrafik {
+    color: #2871dc;
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.grafik-riwayat {
+    min-height: 175px;
+    align-items: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 16px 8px 8px;
+    border: 1px solid #e8eef6;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #fbfdff, #f5f8fc);
+}
+
+.grafik-riwayat > .batang-grafik {
+    width: auto;
+    height: 145px;
+    flex: 1 1 0;
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    color: #708098;
+    font-size: 10px;
+}
+
+.tinggi-batang {
+    max-width: 34px;
+    border-radius: 7px 7px 3px 3px;
+    background: linear-gradient(180deg, #32bed4, #3478f6);
+    box-shadow: 0 3px 8px rgba(52, 120, 246, 0.16);
+}
+
+#halaman-zerocopy > #zerocopy,
+#halaman-pipeline > #pipeline {
+    grid-column: 1 / -1;
+}
+
+#halaman-zerocopy > .card:not(#zerocopy) {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+#halaman-zerocopy > .card:not(#zerocopy) > p,
+#halaman-zerocopy > .card:not(#zerocopy) > h2 {
+    margin: 0;
+}
+
+#halaman-zerocopy > .card:not(#zerocopy) > h2 {
+    margin-right: auto;
+}
+
+#hasilPerbandingan {
+    margin-top: 17px;
+    padding: 15px 17px;
+    border: 1px solid #dce9fb;
+    border-radius: 12px;
+    background: #f5f9ff;
+}
+
+#hasilPerbandingan h4 {
+    margin-bottom: 7px;
+}
+
+#hasilPerbandingan p {
+    margin-bottom: 4px;
+}
+
+.grafik-perbandingan {
+    margin-top: 17px;
+    padding: 18px;
+    border-color: #e4ebf4;
+    border-radius: 13px;
+    background: #f8fafd;
+}
+
+.grafik-perbandingan h4 {
+    margin-bottom: 14px;
+}
+
+.grafik-perbandingan p {
+    margin: 12px 0 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.grafik-perbandingan .batang-grafik {
+    height: 30px;
+    border: 1px solid #e3eaf3;
+    border-radius: 8px;
+    background: #edf2f8;
+}
+
+.batang {
+    border-radius: 7px;
+    font-size: 11px;
+}
+
+.batang.copy-biasa {
+    background: linear-gradient(90deg, #72839a, #8c9bb0);
+}
+
+.batang.zero-copy {
+    background: linear-gradient(90deg, #078ba9, #24bbce);
+}
+
+.tabel-perbandingan {
+    margin-top: 17px;
+    padding: 17px;
+    border-color: #e4ebf4;
+    border-radius: 13px;
+}
+
+.tabel-perbandingan table {
+    min-width: 420px;
+}
+
+.tabel-perbandingan th,
+.tabel-perbandingan td {
+    padding: 11px 12px;
+    border-bottom-color: #e9eef5;
+    font-size: 12px;
+}
+
+.tabel-perbandingan th {
+    background: #f4f7fb;
+    color: #50617a;
+    font-weight: 700;
+}
+
+.tabel-perbandingan tbody tr:hover {
+    background: #f5f9ff;
+}
+
+#halaman-zerocopy > #zerocopy > button {
+    margin-top: 17px;
+}
+
+.pipeline-flow {
+    align-items: center;
+    gap: 11px;
+    margin: 18px 0 22px;
+}
+
+.pipeline-flow div {
+    width: 100%;
+    padding: 15px 17px;
+    border: 1px solid #dce7f3;
+    border-radius: 12px;
+    background: linear-gradient(110deg, #f5f9ff, #f4fbfd);
+    color: #25456f;
+    font-size: 13px;
+}
+
+.pipeline-flow div h3 {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.pipeline-flow div p {
+    margin-bottom: 4px;
+    color: #64758b;
+    font-size: 12px;
+}
+
+.pipeline-flow span {
+    color: #229eb9;
+    font-size: 19px;
+    line-height: 1;
+}
+
+.pipeline-flow div:hover {
+    background: linear-gradient(110deg, #f5f9ff, #f4fbfd);
+    transform: none;
+}
+
+.pipeline-flow div.sedang-proses {
+    border-color: #5cbbe7;
+    background: #edf8ff;
+    box-shadow: 0 0 0 3px rgba(52, 120, 246, 0.08);
+    transform: none;
+}
+
+.pipeline-flow div.selesai-proses {
+    border-color: #8bd1a5;
+    background: #f0faf3;
+}
+
+.sensor-monitor {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid #e4ebf4;
+    border-radius: 14px;
+    background: #f8fafd;
+}
+
+.sensor-monitor h3 {
+    margin-bottom: 12px;
+}
+
+.sensor-monitor video {
+    display: block;
+    min-height: 90px;
+    margin: 8px 0 12px;
+    border: 1px solid #dce5ef;
+    background: #101a2f;
+    object-fit: cover;
+}
+
+.sensor-monitor button {
+    min-height: 39px;
+    margin: 2px 8px 12px 0;
+    padding: 9px 13px;
+    border-radius: 9px;
+    font-size: 11px;
+}
+
+#statusPipeline {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 9px;
+    background: #f3f7fc;
+    color: #60718a;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#riwayat {
+    display: grid;
+    gap: 8px;
+    max-height: 230px;
+    padding: 0;
+    list-style: none;
+}
+
+#riwayat li {
+    margin: 0;
+    padding: 10px 12px;
+    border: 1px solid #e9eef5;
+    border-radius: 9px;
+    background: #fafbfd;
+    color: #586981;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+#riwayat li:hover {
+    border-color: #dce8f8;
+    background: #f5f9ff;
+}
+
+#pesanPencarian:not([hidden]) {
+    margin: 0 0 10px;
+    color: #78879b;
+    font-size: 12px;
+}
+
+footer {
+    margin-top: 30px;
+    padding-top: 17px;
+    border-top-color: #e1e8f1;
+    color: #8390a3;
+    font-size: 11px;
+}
+
+footer p {
+    margin-bottom: 3px;
+}
+
+button:focus-visible,
+.sidebar a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(56, 189, 248, 0.55);
+    outline-offset: 3px;
+}
+
+@media (max-width: 1000px) {
+    .main-content {
+        padding: 25px 22px;
+    }
+
+    .halaman.aktif.dashboard {
+        gap: 17px;
+    }
+
+    .card {
+        padding: 19px;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        padding: 13px 16px 12px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .sidebar h2 {
+        width: 100%;
+        margin: 0 3px 5px;
+        font-size: 20px;
+    }
+
+    .menu-label {
+        display: none;
+    }
+
+    .sidebar a {
+        flex: 1 1 calc(50% - 6px);
+        min-width: 145px;
+        padding: 9px 10px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .main-content {
+        width: 100%;
+        margin: 0;
+        padding: 20px 16px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        margin-bottom: 19px;
+        padding: 18px;
+    }
+
+    .halaman.aktif.dashboard {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    #halaman-dashboard > .welcome,
+    .dashboard > .actions,
+    #halaman-zerocopy > #zerocopy,
+    #halaman-zerocopy > .card:not(#zerocopy),
+    #halaman-pipeline > #pipeline {
+        grid-column: 1;
+    }
+
+    .actions {
+        align-items: stretch;
+        flex-direction: row;
+    }
+
+    .actions button {
+        width: auto;
+        flex: 1 1 180px;
+    }
+
+    #halaman-zerocopy > .card:not(#zerocopy) {
+        flex-wrap: wrap;
+        gap: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 11px 12px;
+    }
+
+    .sidebar a {
+        flex-basis: 100%;
+        min-width: 0;
+        text-align: left;
+    }
+
+    .main-content {
+        padding: 15px 12px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        gap: 11px;
+        padding: 16px;
+    }
+
+    .welcome {
+        padding: 22px 19px;
+    }
+
+    .card {
+        padding: 17px;
+        border-radius: 13px;
+    }
+
+    .actions {
+        flex-direction: column;
+        padding: 13px;
+    }
+
+    .actions button {
+        width: 100%;
+        flex: 0 1 auto;
+    }
+
+    .grafik-perbandingan,
+    .tabel-perbandingan,
+    .sensor-monitor {
+        padding: 13px;
+    }
+
+    .grafik-riwayat {
+        gap: 5px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
